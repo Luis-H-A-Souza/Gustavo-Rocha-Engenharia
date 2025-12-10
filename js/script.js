@@ -8,6 +8,8 @@ constructor() {
 this.header = document.getElementById('header');
 this.lastScrollY = window.scrollY;
 this.scrollingDown = false;
+// new: reference to sidebar so HeaderManager can respect its state
+this.sidebar = document.querySelector('.sidebar');
 this.init();
 }
 
@@ -17,6 +19,16 @@ init() {
 
 handleScroll() {
     const currentScrollY = window.scrollY;
+
+    // If sidebar is open, prevent header from changing and keep it hidden always
+    if (this.sidebar && this.sidebar.classList.contains('active')) {
+        if (!this.header.classList.contains('hidden')) {
+            this.header.classList.add('hidden');
+        }
+        // update lastScrollY to avoid jumping when sidebar closes later
+        this.lastScrollY = currentScrollY;
+        return;
+    }
     
     if (currentScrollY > this.lastScrollY && currentScrollY > 100) {
         // Rolando para baixo
@@ -317,8 +329,14 @@ class MobileMenu {
 constructor() {
 this.menuToggle = document.querySelector('.menu-toggle');
 this.sidebar = document.querySelector('.sidebar');
-this.nav = document.querySelector('.nav'); // <-- nova referência
-this.header = document.getElementById('header'); // <-- nova referência ao header
+this.nav = document.querySelector('.nav');
+this.header = document.getElementById('header');
+
+// bind handlers para poder adicionar/remover nos listeners do document/window
+this.handleDocumentClick = this.handleDocumentClick.bind(this);
+this.handleEscape = this.handleEscape.bind(this);
+this.handleScrollClose = this.handleScrollClose.bind(this);
+
 this.init();
 }
 
@@ -342,16 +360,23 @@ toggleMenu() {
     // esconder a barra de navegação quando o menu abre
     if (this.nav) this.nav.classList.toggle('nav-hidden-by-menu');
 
-    // esconder o header enquanto o menu estiver aberto para não tapar o conteúdo
-    if (this.header) {
-      if (this.sidebar.classList.contains('active')) {
-        // menu abriu -> garantir header oculto
-        this.header.classList.add('hidden');
-      } else {
-        // menu fechou -> apenas reexibir se estivermos perto do topo
-        if (window.scrollY <= 100) {
-          this.header.classList.remove('hidden');
-        }
+    // adicionar/remover listeners globais dependendo do estado
+    if (this.sidebar.classList.contains('active')) {
+      document.addEventListener('click', this.handleDocumentClick);
+      document.addEventListener('keydown', this.handleEscape);
+      // adicionar listener para fechar a sidebar se o usuário tentar rolar
+      window.addEventListener('scroll', this.handleScrollClose, { passive: true });
+
+      // menu abriu -> garantir header oculto e impedir que apareça por scroll
+      if (this.header) this.header.classList.add('hidden');
+    } else {
+      document.removeEventListener('click', this.handleDocumentClick);
+      document.removeEventListener('keydown', this.handleEscape);
+      window.removeEventListener('scroll', this.handleScrollClose);
+
+      // menu fechou -> apenas reexibir se estivermos perto do topo
+      if (this.header && window.scrollY <= 100) {
+        this.header.classList.remove('hidden');
       }
     }
 
@@ -376,6 +401,11 @@ closeMenu() {
 
     if (this.nav) this.nav.classList.remove('nav-hidden-by-menu');
 
+    // remover listeners globais quando fechar
+    document.removeEventListener('click', this.handleDocumentClick);
+    document.removeEventListener('keydown', this.handleEscape);
+    window.removeEventListener('scroll', this.handleScrollClose);
+
     // garantir que o header volte apenas se não estiver escondido por scroll
     if (this.header && window.scrollY <= 100) {
       this.header.classList.remove('hidden');
@@ -387,6 +417,30 @@ closeMenu() {
     spans[2].style.transform = 'none';
     this.menuToggle.setAttribute('aria-expanded', 'false');
   }
+
+// novo método para fechar ao clicar fora da sidebar
+handleDocumentClick(e) {
+  // se o clique foi dentro da sidebar ou no botão do toggle, ignora
+  if (e.target.closest('.sidebar') || e.target.closest('.menu-toggle')) return;
+  // caso contrário, fechar
+  if (this.sidebar.classList.contains('active')) {
+    this.closeMenu();
+  }
+}
+
+// novo método para fechar ao pressionar Escape
+handleEscape(e) {
+  if (e.key === 'Escape' && this.sidebar.classList.contains('active')) {
+    this.closeMenu();
+  }
+}
+
+// quando o usuário rolar enquanto a sidebar estiver ativa, fechar a sidebar imediatamente
+handleScrollClose() {
+  if (this.sidebar && this.sidebar.classList.contains('active')) {
+    this.closeMenu();
+  }
+}
 }
 
 // ===== LAZY LOADING =====
