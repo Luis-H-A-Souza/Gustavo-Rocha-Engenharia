@@ -92,7 +92,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem;  
 }
 
 .logo {
@@ -108,7 +108,8 @@ section {
 .nav ul {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 4rem;
+  font-size: larger;
 }
 
 .nav a {
@@ -138,8 +139,53 @@ section {
   transition: background-color 0.3s ease;
 }
 
+a.btn-social {
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar-actions .btn-social-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
 .btn-whatsapp:hover {
   background-color: #128c7e;
+}
+
+/* ===== VARIANTE: ícones sociais no header (WhatsApp / Instagram) ===== */
+.btn-social-logo {
+  background: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  cursor: pointer;
+  /* Remover destaque de toque em mobile */
+  -webkit-tap-highlight-color: transparent;
+  margin-left: 0.5rem; /* espaçamento entre ícones */
+  transition: transform 0.3s ease;
+}
+
+.btn-social-logo:hover {
+  transform: scale(1.1);
+}
+
+.btn-social-img {
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: contain;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .btn-primary {

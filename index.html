@@ -22,7 +22,6 @@
     <header class="header" id="header">
       <div class="container">
         <div class="logo">
-          <!-- SUBSTITUIR: logo-placeholder.svg pelo logo real -->
           <img
             src="img/Logo.png"
             alt="Gustavo Rocha Engenharia"
@@ -34,22 +33,33 @@
             <li><a href="#inicio">Início</a></li>
             <li><a href="#servicos">Reformas</a></li>
             <li><a href="#portfolio">Portfólio</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
 
         <div class="header-actions">
-          <!-- SUBSTITUIR: numero WhatsApp em formato internacional: +55XXXXXXXXXXX -->
+          <!-- WhatsApp (logo): substitua apenas o caminho da imagem em 'src' abaixo -->
           <a
             href="https://wa.me/5571999865878?text=Olá, gostaria de solicitar um orçamento."
-            class="btn-whatsapp"
+            class="btn-social-logo"
             target="_blank"
-            rel="noopener noreferrer">
-            WhatsApp
+            rel="noopener noreferrer"
+            aria-label="Abrir chat WhatsApp">
+            <!-- Substitua 'img/icones/whatsapp-logo.png' pelo caminho da sua imagem -->
+            <img
+              src="img/icones/whatsapp-logo.png"
+              alt="WhatsApp"
+              class="btn-social-img"
+              width="40"
+              height="40"
+              draggable="false" />
           </a>
 
-          <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar">
+          <button
+            class="menu-toggle"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="sidebar">
             <span></span>
             <span></span>
             <span></span>
@@ -64,7 +74,6 @@
           <li><a href="#inicio">Início</a></li>
           <li><a href="#servicos">Reformas</a></li>
           <li><a href="#portfolio">Portfólio</a></li>
-          <li><a href="#depoimentos">Depoimentos</a></li>
           <li><a href="#contato">Contato</a></li>
         </ul>
 
@@ -72,19 +81,33 @@
           <!-- SUBSTITUIR: numero WhatsApp em formato internacional: +55XXXXXXXXXXX -->
           <a
             href="https://wa.me/5571999865878?text=Olá, gostaria de solicitar um orçamento."
-            class="btn-whatsapp"
+            class="btn-whatsapp btn-social"
             target="_blank"
             rel="noopener noreferrer">
-            WhatsApp
+            <img
+              src="img/icones/Whatsapp-logo-white.png"
+              alt="whatsapp-logo"
+              class="btn-whatsapp-img btn-social-img" />
           </a>
 
           <a
             href="https://www.instagram.com/gustavorochaengenharia/"
             target="_blank"
             rel="noopener noreferrer"
-            >Instagram</a
-          >
-          <a href="mailto:gustavorochaengenharia@gmail.com">Email</a>
+            class="btn-instagram btn-social"
+            ><img
+              src="img/icones/Instagram-logo-white.png"
+              alt="Instagram"
+              class="btn-instagram-img btn-social-img" />
+          </a>
+          <a
+            href="mailto:gustavorochaengenharia@gmail.com"
+            class="btn-email btn-social"
+            ><img
+              src="img/icones/Mail-logo-white.png"
+              alt="Email"
+              class="btn-email-img btn-social-img" />
+          </a>
 
           <!-- SUBSTITUIR: PDF institucional real -->
           <a
@@ -197,55 +220,7 @@
         </div>
       </section>
 
-      <!-- Antes e Depois Section -->
-      <section class="antes-depois reveal">
-        <div class="container">
-          <h2>Antes e Depois</h2>
-
-          <div class="carousel">
-            <div class="carousel-track">
-              <!-- SUBSTITUIR: Imagens reais antes/depois -->
-              <div class="carousel-slide">
-                <img
-                  src="assets/placeholder-before.jpg"
-                  alt="Projeto antes da reforma - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-                <img
-                  src="assets/placeholder-after.jpg"
-                  alt="Projeto depois da reforma - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-              </div>
-
-              <div class="carousel-slide">
-                <img
-                  src="assets/placeholder-before.jpg"
-                  alt="Projeto antes da reforma - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-                <img
-                  src="assets/placeholder-after.jpg"
-                  alt="Projeto depois da reforma - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-              </div>
-
-              <div class="carousel-slide">
-                <img
-                  src="assets/placeholder-before.jpg"
-                  alt="Projeto antes da reforma - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-                <img
-                  src="assets/placeholder-after.jpg"
-                  alt="Projeto depois da reforma - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-              </div>
-            </div>
-
-            <button class="carousel-prev" aria-label="Slide anterior">‹</button>
-            <button class="carousel-next" aria-label="Próximo slide">›</button>
-
-            <div class="carousel-indicators"></div>
-          </div>
-        </div>
-      </section>
+      <!-- Antes e Depois — removido temporariamente -->
 
       <!-- Processo Section -->
       <section class="processo reveal">
@@ -281,36 +256,7 @@
         </div>
       </section>
 
-      <!-- Depoimentos Section -->
-      <section id="depoimentos" class="depoimentos reveal">
-        <div class="container">
-          <h2>Depoimentos</h2>
-
-          <div class="depoimentos-grid">
-            <!-- SUBSTITUIR: Depoimentos reais com prints/imagens -->
-            <div class="depoimento">
-              <img
-                src="img/Depoimentos/fakeChat1.png"
-                alt="Depoimento cliente 1 - SUBSTITUIR POR: print real do depoimento"
-                loading="lazy" />
-            </div>
-
-            <div class="depoimento">
-              <img
-                src="img/Depoimentos/fakeChat2.png"
-                alt="Depoimento cliente 2 - SUBSTITUIR POR: print real do depoimento"
-                loading="lazy" />
-            </div>
-
-            <div class="depoimento">
-              <img
-                src="img/Depoimentos/fakeChat3.png"
-                alt="Depoimento cliente 3 - SUBSTITUIR POR: print real do depoimento"
-                loading="lazy" />
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- Depoimentos — removido temporariamente -->
 
       <!-- Portfolio Section -->
       <section id="portfolio" class="portfolio reveal">
@@ -362,28 +308,6 @@
                   loading="lazy" />
               </div>
             </div>
-
-            <div class="category">
-              <h3>Fachadas</h3>
-              <div class="portfolio-grid">
-                <img
-                  src="assets/placeholder-thumb.jpg"
-                  alt="Projeto fachada 1 - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-                <img
-                  src="assets/placeholder-thumb.jpg"
-                  alt="Projeto fachada 2 - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-                <img
-                  src="assets/placeholder-thumb.jpg"
-                  alt="Projeto fachada 3 - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-                <img
-                  src="assets/placeholder-thumb.jpg"
-                  alt="Projeto fachada 4 - SUBSTITUIR POR: descrição da imagem real"
-                  loading="lazy" />
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -400,7 +324,13 @@
               class="btn-whatsapp"
               target="_blank"
               rel="noopener noreferrer">
-              WhatsApp
+              <img
+                src="img/icones/Whatsapp-logo-white.png"
+                alt="WhatsApp"
+                class="btn-whatsapp-img"
+                width="24"
+                height="24"
+                draggable="false" />
             </a>
 
             <a
@@ -408,10 +338,24 @@
               class="btn-instagram"
               target="_blank"
               rel="noopener noreferrer">
-              Instagram
+              <img
+                src="img/icones/Instagram-logo-white.png"
+                alt="Instagram"
+                class="btn-instagram-img"
+                width="24"
+                height="24"
+                draggable="false" />
             </a>
 
-            <a href="mailto:gustavorochaengenharia@gmail.com" class="btn-email"> Email </a>
+            <a href="mailto:gustavorochaengenharia@gmail.com" class="btn-email">
+              <img
+                src="img/icones/Mail-logo-white.png"
+                alt="Email"
+                class="btn-email-img"
+                width="24"
+                height="24"
+                draggable="false" />
+            </a>
 
             <!-- SUBSTITUIR: Endereço completo do Google Maps -->
             <a
@@ -419,7 +363,13 @@
               class="btn-maps"
               target="_blank"
               rel="noopener noreferrer">
-              Ver no Maps
+              <img
+                src="img/icones/Google-Maps-logo-white.png"
+                alt="Maps"
+                class="btn-maps-img"
+                width="24"
+                height="24"
+                draggable="false" />
             </a>
           </div>
         </div>
